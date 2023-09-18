@@ -1,0 +1,38 @@
+<div class="overlay" *ngIf="uploading">
+  <mat-spinner class="spinner" color="warn"></mat-spinner>
+  <div class="loading-text">Carregando...</div>
+</div>
+
+<div class="mat-card">
+  <div class="card-header">
+    <div class="image-container">
+      <img src="favicon.ico" alt="Imagem de Upload" class="imagem-upload" />
+    </div>
+  </div>
+  <mat-card-title style="font-size: 30px">Upload de Arquivos</mat-card-title>
+  <div class="line"></div>
+
+  <mat-card-content>
+    <label class="custom-file-input-button">
+      <form #fileUploadForm>
+        <input
+          (change)="onFileSelected($event)"
+          type="file"
+          accept=".xml"
+          multiple
+        />
+      </form>
+    </label>
+    <div>
+      <button
+        style="margin-top: 10px"
+        mat-raised-button
+        color="warn"
+        (click)="uploadFile()"
+        [disabled]="uploading"
+      >
+        <mat-icon class="mat-icon">attach_file</mat-icon>Enviar Arquivos
+      </button>
+    </div>
+  </mat-card-content>
+</div>
